@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('app-home', () => {
+describe('fsk-notes-list', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<app-home></app-home>');
+    await page.setContent('<fsk-notes-list></fsk-notes-list>');
 
-    const element = await page.find('app-home');
+    const element = await page.find('fsk-notes-list');
     expect(element).toHaveClass('hydrated');
   });
 });
