@@ -17,4 +17,21 @@ describe('app-home tests', () => {
       </app-home>
     `);
   });
+
+  it('Should show note on receiving selectedNote event', async () => {
+    const page = await newSpecPage({
+      components: [AppHome],
+      html: `<app-home></app-home>`,
+    });
+
+    const selectedNoteEvent = new CustomEvent('selectedNote', { detail: '1' });
+    page.root.dispatchEvent(selectedNoteEvent);
+    await page.waitForChanges();
+    expect(page.root.shadowRoot).toEqualHtml(
+      ` <div class="app-home">
+          <fsk-notes-list></fsk-notes-list>
+          <fsk-note note-id="1"></fsk-note>
+          </div>`,
+    );
+  });
 });
